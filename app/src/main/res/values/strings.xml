@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">IronWorksGym</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_usuario">Usuário</string>
+    <string name="hint_telefone">Telefone</string>
+    <string name="hint_datanasc">Data de Nascimento</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_confirmarsenha">Confirmar Senha</string>
+    <string name="hint_torre">Torre</string>
+    <string name="hint_apartamento">Apartamento</string>
+    <string name="txt_button_entrar">Entrar</string>
+    <string name="txt_tela_senha">Esqueceu a senha?</string>
+    <string name="txt_Cadastre_se">Cadastre-se</string>
+    <string name="txt_novasenha">Nova Senha</string>
+    <string name="txt_Required">Required</string>
+
+
+</resources>
