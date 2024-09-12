@@ -36,7 +36,6 @@ public class Register extends AppCompatActivity {
         editConfirmarSenha = findViewById(R.id.editConfirmarSenha);
         editApartamento = findViewById(R.id.editApartamento);
         editTorre = findViewById(R.id.editTorre);
-        cbTermos = findViewById(R.id.cbTermos);
         btnEntrar = findViewById(R.id.btnEntrar);
 
 
