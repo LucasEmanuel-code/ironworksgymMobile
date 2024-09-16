@@ -22,10 +22,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
+        botao = findViewById(R.id.btCadastrar);
+
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Register.class);
                 startActivity(intent);
             }
         });
+
+
+
     }
 
 }

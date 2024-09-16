@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/plano_fundo"
+    android:background="@drawable/background"
     tools:context=".Login">
 
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:hint="@string/hint_senha"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:padding="15dp"
             android:textSize="18sp" />

@@ -192,7 +192,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:hint="@string/hint_senha"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:padding="15dp"
             android:textSize="18sp"
@@ -225,7 +225,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
             android:hint="@string/hint_confirmarsenha"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:padding="15dp"
             android:textSize="18sp"
@@ -327,26 +327,12 @@
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/cbTermos"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:button="@null"
-        android:drawableStart="@drawable/checkbox"
-        android:text="Concordo com os termos e condições"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutApartamento"
-        tools:ignore="MissingConstraints" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnEntrar"
         android:layout_width="143dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="572dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/background_button"
         android:padding="15dp"
@@ -356,7 +342,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbTermos" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

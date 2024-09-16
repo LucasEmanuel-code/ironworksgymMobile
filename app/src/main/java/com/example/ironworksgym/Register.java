@@ -2,6 +2,7 @@ package com.example.ironworksgym;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -36,7 +37,6 @@ public class Register extends AppCompatActivity {
         editConfirmarSenha = findViewById(R.id.editConfirmarSenha);
         editApartamento = findViewById(R.id.editApartamento);
         editTorre = findViewById(R.id.editTorre);
-        cbTermos = findViewById(R.id.cbTermos);
         btnEntrar = findViewById(R.id.btnEntrar);
 
 
@@ -202,20 +202,24 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String usuario = editUsuario.getText().toString();
-                String email = editEmail.getText().toString();
-                String DataNasc = editDataNasc.getText().toString();
-                String senha = editSenha.getText().toString();
-                String numero = editPhone.getText().toString();
-                String CPF = editCPF.getText().toString();
-                String confirmarsenha = editConfirmarSenha.getText().toString();
-                String Apartamento = editApartamento.getText().toString();
-                String Torre = editTorre.getText().toString();
+                    String usuario = editUsuario.getText().toString();
+                    String email = editEmail.getText().toString();
+                    String DataNasc = editDataNasc.getText().toString();
+                    String senha = editSenha.getText().toString();
+                    String numero = editPhone.getText().toString();
+                    String CPF = editCPF.getText().toString();
+                    String confirmarsenha = editConfirmarSenha.getText().toString();
+                    String Apartamento = editApartamento.getText().toString();
+                    String Torre = editTorre.getText().toString();
+
 
                 boolean check = validateinfo(usuario, email, DataNasc, senha, numero, CPF, confirmarsenha, Apartamento, Torre);
 
                 if (check) {
                     Toast.makeText(getApplicationContext(), "Infomações validas", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Register.this, Home.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Verifique as informações novamente", Toast.LENGTH_SHORT).show();
                 }
@@ -362,7 +366,7 @@ public class Register extends AppCompatActivity {
     }
 
 
-    private boolean validateCommonFields(String usuario, String email, String senha, String confirmarsenha, String numero) {
+    private boolean validateCommonFields(String usuario, String email, String CPF, String senha, String confirmarsenha, String numero) {
         // Validações comuns já implementadas...
         return true;
     }
@@ -391,4 +395,6 @@ public class Register extends AppCompatActivity {
 
         }
     }
+
+
 }
