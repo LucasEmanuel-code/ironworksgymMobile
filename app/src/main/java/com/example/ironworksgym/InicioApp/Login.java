@@ -1,14 +1,18 @@
-package com.example.ironworksgym;
+package com.example.ironworksgym.InicioApp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ironworksgym.AgendamentoApp.Inicio;
+import com.example.ironworksgym.MainActivity;
+import com.example.ironworksgym.R;
 
 public class Login extends AppCompatActivity {
 
@@ -38,6 +42,17 @@ public class Login extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+
+        btEntrar = findViewById(R.id.btEntrar);
+
+        btEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Login.this, Inicio.class);
+                startActivity(intent);
             }
         });
 

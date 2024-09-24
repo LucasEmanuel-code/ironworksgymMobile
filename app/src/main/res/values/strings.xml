@@ -16,6 +16,7 @@
     <string name="txt_Required">Required</string>
     <string name="txt_button_agendar">Agendar</string>
     <string name="txt_button_comecar">Começar Agora</string>
-
+    <string name="txt_button_proximo">Próximo</string>
+    <string name="txt_button_voltar">Voltar</string>
 
 </resources>

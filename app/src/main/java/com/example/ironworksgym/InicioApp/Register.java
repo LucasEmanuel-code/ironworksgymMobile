@@ -1,7 +1,8 @@
-package com.example.ironworksgym;
+package com.example.ironworksgym.InicioApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -11,6 +12,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.ironworksgym.AgendamentoApp.Inicio;
+import com.example.ironworksgym.MainActivity;
+import com.example.ironworksgym.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -236,6 +241,17 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+
+        btnEntrar = findViewById(R.id.btnEntrar);
+
+       btnEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Register.this, Inicio.class);
+                startActivity(intent);
             }
         });
 

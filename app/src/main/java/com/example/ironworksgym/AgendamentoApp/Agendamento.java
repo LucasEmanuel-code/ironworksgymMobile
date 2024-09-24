@@ -1,11 +1,18 @@
-package com.example.ironworksgym;
+package com.example.ironworksgym.AgendamentoApp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TimePicker;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ironworksgym.InicioApp.Register;
+import com.example.ironworksgym.MainActivity;
+import com.example.ironworksgym.R;
+
 import java.util.Calendar;
 
 public class Agendamento extends AppCompatActivity {
@@ -13,6 +20,8 @@ public class Agendamento extends AppCompatActivity {
     private Calendar selectedDate;
     private int selectedHour;
     private int selectedMinute;
+    private Button botao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +61,10 @@ public class Agendamento extends AppCompatActivity {
         });
 
         // Encontra o botão "Agendar" no layout
-        Button btnAgendar = findViewById(R.id.btnAgendar);
+        Button btnproximo = findViewById(R.id.btnproximo);
 
         // Define o listener para o botão "Agendar"
-        btnAgendar.setOnClickListener(v -> {
+        btnproximo.setOnClickListener(v -> {
             // Atualiza o Calendar com a hora escolhida
             selectedDate.set(Calendar.HOUR_OF_DAY, selectedHour);
             selectedDate.set(Calendar.MINUTE, selectedMinute);
@@ -66,6 +75,15 @@ public class Agendamento extends AppCompatActivity {
                     + " às " + selectedHour + ":00";
 
             Toast.makeText(Agendamento.this, agendamento, Toast.LENGTH_LONG).show();
+        });
+
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Agendamento.this, Equipamento.class);
+                startActivity(intent);
+            }
         });
     }
 }
