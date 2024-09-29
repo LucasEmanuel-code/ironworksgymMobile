@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".AgendamentoApp.Inicio">
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/logo"
@@ -24,15 +23,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="283dp"
-        android:layout_height="0dp"
+        android:layout_width="281dp"
+        android:layout_height="46dp"
         android:layout_marginHorizontal="110dp"
         android:layout_marginTop="44dp"
+        android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="Seja"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
@@ -40,20 +39,18 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="283dp"
-        android:layout_height="0dp"
+        android:layout_width="281dp"
+        android:layout_height="46dp"
         android:layout_marginHorizontal="110dp"
+        android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="Bem vindo!"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="358dp" />
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -68,7 +65,7 @@
         android:text="@string/txt_button_entrar"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +99,7 @@
         android:text="@string/txt_Cadastre_se"
         android:textColor="@color/purple"
         android:textSize="14sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
