@@ -1,17 +1,13 @@
 package com.example.ironworksgym.AgendamentoApp;
 
+import android.content.Intent; // Importar a classe Intent
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-
 import com.example.ironworksgym.R;
 import com.google.android.material.card.MaterialCardView;
+import android.widget.TextView;
 
 public class Equipamento extends AppCompatActivity {
 
@@ -55,11 +51,13 @@ public class Equipamento extends AppCompatActivity {
             // Aqui você pode colocar o código para agendar o equipamento
             // Por exemplo, salvar no banco de dados ou mostrar uma mensagem de confirmação
             Toast.makeText(this, "Equipamento " + selectedEquipment + " agendado com sucesso!", Toast.LENGTH_SHORT).show();
+
+            // Iniciar a atividade Home2
+            Intent intent = new Intent(Equipamento.this, Home2.class);
+            startActivity(intent);
+            finish(); // Opcional: Se você quiser fechar a atividade atual
         } else {
             Toast.makeText(this, "Por favor, selecione um equipamento antes de agendar!", Toast.LENGTH_SHORT).show();
         }
     }
-    
-
 }
-
