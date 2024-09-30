@@ -44,8 +44,10 @@
         android:id="@+id/FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layou_weight="1"
-        />
+        android:layout_above="@id/bottomNavView"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavView"
