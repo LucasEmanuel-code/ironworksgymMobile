@@ -19,27 +19,6 @@ import java.sql.SQLException;
 
 public class Conexao extends AppCompatActivity {
 
-    // Método para conectar ao SQL Server
-    public static Connection conectar() {
-        Connection conn = null;
-        String url = "jdbc:sqlserver://<IP_DO_SERVIDOR>:1433;databaseName=IronWorksGym";
-        String user = "sa";
-        String password = "@ITB123456";
-        
-        try {
-            // Carrega o driver JDBC do SQL Server
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            // Estabelece a conexão
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return conn;
-    }
-}
 
 }
 
