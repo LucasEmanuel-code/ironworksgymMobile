@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ironworksgym.AgendamentoApp.Equipamento;
 import com.example.ironworksgym.R;
 
 import java.util.Calendar;
@@ -26,8 +25,6 @@ public class Agendamento extends AppCompatActivity {
         setContentView(R.layout.agendamento);
 
         botao = findViewById(R.id.btnproximo);
-
-        // Inicializa o objeto Calendar para armazenar a data
         selectedDate = Calendar.getInstance();
         selectedDate.clear(); // Limpa para que não tenha uma data selecionada por padrão
 
@@ -36,15 +33,12 @@ public class Agendamento extends AppCompatActivity {
 
         // Encontra o TimePicker no layout
         TimePicker timePicker = findViewById(R.id.hours);
-
-        // Configura o TimePicker para exibir em formato de 24 horas
         timePicker.setIs24HourView(true);
 
         // Listener para quando o usuário selecionar uma data no CalendarView
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                // Atualiza o Calendar com a data escolhida
                 selectedDate.set(year, month, dayOfMonth);
             }
         });
@@ -53,9 +47,8 @@ public class Agendamento extends AppCompatActivity {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                // Força os minutos a sempre serem 0
-                selectedHour = hourOfDay;
-                view.setMinute(0); // Sempre 0 para agendamento a cada hora cheia
+                selectedHour = hourOfDay; // Armazena a hora selecionada
+                view.setMinute(0); // Força os minutos a sempre serem 00
             }
         });
 
@@ -63,22 +56,19 @@ public class Agendamento extends AppCompatActivity {
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Verifica se uma data foi selecionada
-                if (selectedDate.isSet(Calendar.YEAR) && selectedHour != -1) {
-                    // Cria um intent para navegar para a próxima atividade
+                if (selectedHour != -1 && selectedDate.get(Calendar.YEAR) != 1970) { // Verifica se a data e hora estão válidas
+                    // Criar Intent para iniciar a próxima atividade (Equipamento)
                     Intent intent = new Intent(Agendamento.this, Equipamento.class);
-
-                    // Adiciona os dados da data e hora como extras no intent
+                    // Adiciona as informações de data e hora como extras
                     intent.putExtra("year", selectedDate.get(Calendar.YEAR));
                     intent.putExtra("month", selectedDate.get(Calendar.MONTH));
                     intent.putExtra("day", selectedDate.get(Calendar.DAY_OF_MONTH));
                     intent.putExtra("hour", selectedHour);
-                    intent.putExtra("minute", 0); // Minutos sempre 0
-
-                    // Inicia a próxima atividade
+                    intent.putExtra("minute", 0); // Sempre 00 para manter agendamentos de uma em uma hora
+                    // Iniciar a próxima atividade
                     startActivity(intent);
                 } else {
-                    // Se a data ou hora não forem selecionadas, mostra uma mensagem de erro
+                    // Exibe mensagem de erro se a data ou a hora não forem selecionadas
                     Toast.makeText(Agendamento.this, "Por favor, selecione uma data e hora antes de prosseguir.", Toast.LENGTH_LONG).show();
                 }
             }
