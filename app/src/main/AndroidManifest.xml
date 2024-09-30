@@ -28,6 +28,8 @@
 
         <activity android:name=".AgendamentoApp.Agendamento" />
         <activity android:name=".AgendamentoApp.Inicio"/>
+        <activity android:name=".AgendamentoApp.Equipamento"/>
+        <activity android:name=".AgendamentoApp.Home2" />
 
 
     </application>
