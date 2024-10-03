@@ -1,19 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample data extraction rules file; uncomment and customize as necessary.
-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
--->
-<data-extraction-rules>
-    <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
-    </cloud-backup>
-    <!--
-    <device-transfer>
-        <include .../>
-        <exclude .../>
-    </device-transfer>
-    -->
-</data-extraction-rules>
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">
+            10.0.2.2
+        </domain>
+    </domain-config>
+</network-security-config>
+
+
+
+
+
+
+
+
+
+
+
+package com.example.ironworksgym.api;
+
+import com.example.ironworksgym.Models.Usuario;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class RetrofitClient {
+
+    private static Retrofit retrofit;
+    private static UsuarioApi usuarioApi;
+
+    // Método para obter a instância do Retrofit
+    public static Retrofit getRetrofitInstance() {
+        String apiUrl = "http://10.0.2.2:8080";
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(apiUrl) // Troque pela URL do servidor da API
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            usuarioApi = retrofit.create(UsuarioApi.class);
+        }
+        return retrofit;
+    }
+
+    // Método para criar um novo usuário
+    public static void createUser(Usuario novoUsuario) {
+        Call<Usuario> call = usuarioApi.create(novoUsuario);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    // Usuário criado com sucesso
+                } else {
+                    // Tratamento de erro
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                // Tratamento de falha na chamada
+            }
+        });
+    }
+}
