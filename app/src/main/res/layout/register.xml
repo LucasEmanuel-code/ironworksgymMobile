@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".AgendamentoApp.Inicio">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="274dp"
+        android:layout_height="36dp"
+        android:layout_marginHorizontal="110dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="Primeira Vez?"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="377dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_usuario"
+            android:inputType="text"
+            android:textColor="#FFFFFF"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutDataNasc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="377dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDataNasc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:textColor="#FFFFFF"
+            android:hint="@string/hint_datanasc"
+            android:inputType="date"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutPhone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="377dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutDataNasc">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="15"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_telefone"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutCPF"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="378dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutPhone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCPF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_cpf"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutSenha"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="378dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutCPF"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_senha"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutConfirmarSenha"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="378dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutSenha"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editConfirmarSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_confirmarsenha"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutUsuario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_email"
+            android:textColor="#FFFFFF"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutApartamento"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutConfirmarSenha"
+        app:layout_constraintVertical_bias="0.0"
+        app:passwordToggleEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editApartamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:textColor="#FFFFFF"
+            android:hint="@string/hint_apartamento"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutTorre"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="115dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#FFFFFF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutApartamento"
+        app:passwordToggleEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTorre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_torre"
+            android:inputType="text"
+            android:textColor="#FFFFFF"
+            android:maxLines="2"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEntrar"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="684dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/background_button"
+        android:padding="15dp"
+        android:text="@string/txt_button_entrar"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

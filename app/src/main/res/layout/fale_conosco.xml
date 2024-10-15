@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Fragment.SettingsFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="281dp"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="110dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="Fale Conosoco"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="377dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#8F36FF"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/lilac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/hint_usuario"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Assunto"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="375dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#8F36FF"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutUsuario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editAssunto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/txt_assuntos"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="281dp"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="110dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="Relate o problema ou a dúvida:"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Assunto"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutMensagem"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:textColorHint="#ADFFFFFF"
+        app:boxStrokeColor="#8F36FF"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editMensagem"
+            android:layout_width="300dp"
+            android:layout_height="289dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="top"
+            android:hint="Digite sua mensagem"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:padding="10dp"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btVoltar"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="404dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/background_button"
+        android:padding="15dp"
+        android:text="@string/txt_button_voltar"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btEnviar"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="404dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/background_button"
+        android:padding="15dp"
+        android:text="@string/txt_button_enviar"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

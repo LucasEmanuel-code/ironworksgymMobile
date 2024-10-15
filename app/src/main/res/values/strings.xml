@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">IronWorksGym</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_usuario">Nome</string>
+    <string name="hint_telefone">Telefone</string>
+    <string name="hint_datanasc">Data de Nascimento</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_confirmarsenha">Confirmar Senha</string>
+    <string name="hint_torre">Torre</string>
+    <string name="hint_apartamento">Apartamento</string>
+    <string name="txt_button_entrar">Entrar</string>
+    <string name="txt_tela_senha">Esqueceu a senha?</string>
+    <string name="txt_Cadastre_se">Cadastre-se</string>
+    <string name="txt_novasenha">Nova Senha</string>
+    <string name="txt_Required">Required</string>
+    <string name="txt_button_agendar">Agendar</string>
+    <string name="txt_button_comecar">Começar Agora</string>
+    <string name="txt_button_deletar">Deletar</string>
+    <string name="txt_button_editarr">Editar</string>
+    <string name="txt_button_proximo">Próximo</string>
+    <string name="txt_button_enviar">Enviar</string>
+    <string name="txt_button_voltar">Voltar</string>
+    <string name="txt_assuntos">Assunto</string>
+    <string name="welcome_message">Olá, %1$s!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

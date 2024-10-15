@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo personalizado para o CalendarView -->
+    <style name="CustomCalendarView">
+        <item name="android:dateTextAppearance">@style/CalendarDateTextAppearance</item>
+        <item name="android:weekDayTextAppearance">@style/CalendarWeekDayTextAppearance</item>
+    </style>
+
+    <!-- Estilo para as datas do calendário com cor branca -->
+    <style name="CalendarDateTextAppearance" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <!-- Estilo para os dias da semana com cor branca -->
+    <style name="CalendarWeekDayTextAppearance" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="CustomTimePickerDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:textColor">#FFFFFF</item> <!-- Cor do texto -->
+        <item name="android:timePickerStyle">@style/CustomTimePickerStyle</item>
+    </style>
+
+    <style name="CustomTimePickerStyle">
+        <item name="android:textColor">#FFFFFF</item> <!-- Altera a cor do texto -->
+    </style>
+</resources>

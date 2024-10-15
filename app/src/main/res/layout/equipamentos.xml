@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".AgendamentoApp.Home2">
+
+
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="28dp"
+     android:gravity="center"
+     android:text="Qual Equipamento?"
+     android:textColor="#FFFFFF"
+     android:textSize="25sp"
+     android:textStyle="bold"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.497"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent" />
+
+ <TextView
+     android:id="@+id/tvSelectedEquipment"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="684dp"
+     android:fontFamily="@font/poppinsbold"
+     android:gravity="center"
+     android:text="Nenhum equipamento selecionado"
+     android:textColor="#FFFFFF"
+     android:textSize="18sp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.505"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/textView" />
+
+ <com.google.android.material.card.MaterialCardView
+     android:id="@+id/card"
+     android:layout_width="143dp"
+     android:layout_height="168dp"
+     android:layout_margin="8dp"
+     app:cardBackgroundColor="@color/purple2"
+     app:cardCornerRadius="6dp"
+     app:cardElevation="6dp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.134"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/textView"
+     app:layout_constraintVertical_bias="0.085"
+     app:strokeWidth="1dp"
+     tools:ignore="MissingConstraints">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+   <!-- Imagem de mídia com tamanho reduzido -->
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="120dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/leg_press" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/purple2"
+       android:orientation="vertical"
+       android:padding="10dp">
+
+    <!-- Título com tamanho de texto reduzido -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadeira Extensora"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/white"
+        android:textSize="12.7sp" />
+   </LinearLayout>
+  </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+
+ <com.google.android.material.card.MaterialCardView
+     android:id="@+id/card2"
+     android:layout_width="143dp"
+     android:layout_height="168dp"
+     android:layout_margin="8dp"
+     app:cardBackgroundColor="@color/purple2"
+     app:cardCornerRadius="6dp"
+     app:cardElevation="6dp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.828"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/textView"
+     app:layout_constraintVertical_bias="0.085"
+     app:strokeWidth="1dp"
+     tools:ignore="MissingConstraints">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+   <!-- Imagem de mídia com tamanho reduzido -->
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="120dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/peck_deck" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/purple2"
+       android:orientation="vertical"
+       android:padding="10dp">
+
+    <!-- Título com tamanho de texto reduzido -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Peck Deck"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+   </LinearLayout>
+  </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <com.google.android.material.card.MaterialCardView
+     android:id="@+id/card3"
+     android:layout_width="143dp"
+     android:layout_height="168dp"
+     android:layout_margin="10dp"
+     app:cardBackgroundColor="@color/purple2"
+     app:cardCornerRadius="6dp"
+     app:cardElevation="6dp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.134"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/card"
+     app:layout_constraintVertical_bias="0.066"
+     app:strokeWidth="1dp"
+     tools:ignore="MissingConstraints">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+   <!-- Imagem de mídia com tamanho reduzido -->
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="120dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/bicicleta" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/purple2"
+       android:orientation="vertical"
+       android:padding="10dp">
+
+    <!-- Título com tamanho de texto reduzido -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Bicicleta"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+   </LinearLayout>
+  </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <com.google.android.material.card.MaterialCardView
+     android:id="@+id/card4"
+     android:layout_width="143dp"
+     android:layout_height="168dp"
+     android:layout_margin="8dp"
+     app:cardBackgroundColor="@color/purple2"
+     app:cardCornerRadius="6dp"
+     app:cardElevation="6dp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.828"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/card2"
+     app:layout_constraintVertical_bias="0.066"
+     app:strokeWidth="1dp"
+     tools:ignore="MissingConstraints">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+   <!-- Imagem de mídia com tamanho reduzido -->
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="120dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/cadeira_extensora" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/purple2"
+       android:orientation="vertical"
+       android:padding="10dp">
+
+    <!-- Título com tamanho de texto reduzido -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leg Press"
+        android:fontFamily="@font/poppins_semibold"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+   </LinearLayout>
+  </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+
+ <com.google.android.material.card.MaterialCardView
+     android:id="@+id/card5"
+     android:layout_width="143dp"
+     android:layout_height="168dp"
+     android:layout_margin="8dp"
+     app:cardBackgroundColor="@color/purple2"
+     app:cardCornerRadius="6dp"
+     app:cardElevation="6dp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.137"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/card3"
+     app:layout_constraintVertical_bias="0.150"
+     app:strokeWidth="1dp"
+     tools:ignore="MissingConstraints">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+   <!-- Imagem de mídia com tamanho reduzido -->
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="120dp"
+       android:scaleType="centerCrop"
+       android:src="@drawable/esteira" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/purple2"
+       android:orientation="vertical"
+       android:padding="10dp">
+
+    <!-- Título com tamanho de texto reduzido -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Esteira"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/white"
+        android:textSize="12.sp" />
+   </LinearLayout>
+  </LinearLayout>
+ </com.google.android.material.card.MaterialCardView>
+
+ <androidx.appcompat.widget.AppCompatButton
+     android:id="@+id/btagendar"
+     android:layout_width="143dp"
+     android:layout_height="48dp"
+     android:layout_marginStart="20dp"
+     android:layout_marginTop="512dp"
+     android:layout_marginEnd="20dp"
+     android:background="@drawable/background_button"
+     android:fontFamily="@font/poppins_semibold"
+     android:padding="15dp"
+     android:text="@string/txt_button_agendar"
+     android:textColor="@color/white"
+     android:textSize="14sp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.903"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/card2" />
+
+ <androidx.appcompat.widget.AppCompatButton
+     android:id="@+id/btvoltar"
+     android:layout_width="143dp"
+     android:layout_height="48dp"
+     android:layout_marginStart="20dp"
+     android:layout_marginTop="512dp"
+     android:layout_marginEnd="20dp"
+     android:background="@drawable/background_button2"
+     android:fontFamily="@font/poppins_semibold"
+     android:padding="15dp"
+     android:text="@string/txt_button_voltar"
+     android:textColor="@color/purple"
+     android:textSize="14sp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.096"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/card" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
