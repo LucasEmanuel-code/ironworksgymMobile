@@ -1,29 +1,42 @@
 package com.example.ironworksgym.Models;
 
 import com.google.gson.annotations.SerializedName;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class Agenda {
+import java.io.Serializable;
+
+public class Agenda implements Serializable {
 
     @SerializedName("id")
     private long id;
 
-    // Data formatada como "yyyy-MM-dd" para compatibilidade com JSON
     @SerializedName("dataDisponivel")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private String dataDisponivel;
 
     @SerializedName("horarioDisponivel")
     private String horarioDisponivel;
 
     @SerializedName("usuario")
-    private long usuarioId; // ID do usuário, representado como long
+    private Usuario usuario;  // Renomeado para refletir que é um objeto
 
     @SerializedName("equipamento")
-    private long equipamentoId; // ID do equipamento, representado como long
+    private Equipamento equipamento;  // Renomeado para refletir que é um objeto
 
     @SerializedName("statusAgendamento")
     private String statusAgendamento;
+
+    // Construtor completo
+    public Agenda(long id, String dataDisponivel, String horarioDisponivel,
+                  Usuario usuario, Equipamento equipamento, String statusAgendamento) {
+        this.id = id;
+        this.dataDisponivel = dataDisponivel;
+        this.horarioDisponivel = horarioDisponivel;
+        this.usuario = usuario;
+        this.equipamento = equipamento;
+        this.statusAgendamento = statusAgendamento;
+    }
+
+    // Construtor padrão
+    public Agenda() {}
 
     // Getters e Setters
     public long getId() {
@@ -50,20 +63,20 @@ public class Agenda {
         this.horarioDisponivel = horarioDisponivel;
     }
 
-    public long getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public long getEquipamentoId() {
-        return equipamentoId;
+    public Equipamento getEquipamento() {
+        return equipamento;
     }
 
-    public void setEquipamentoId(long equipamentoId) {
-        this.equipamentoId = equipamentoId;
+    public void setEquipamento(Equipamento equipamento) {
+        this.equipamento = equipamento;
     }
 
     public String getStatusAgendamento() {

@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ironworksgym.AgendamentoApp.Inicio;
+import com.example.ironworksgym.Client.RetrofitClient;
 import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
-import com.example.ironworksgym.Client.RetrofitClient;
 import com.example.ironworksgym.api.UsuarioApi;
 
 import retrofit2.Call;
@@ -54,20 +54,12 @@ public class Login extends AppCompatActivity {
         });
 
         btEntrar = findViewById(R.id.btEntrar);
-        btEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser();
-            }
-        });
+        btEntrar.setOnClickListener(v -> loginUser());
 
         txtEsqueceuSenha = findViewById(R.id.txtEsqueceuSenha);
-        txtEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this, EsqueceuSenha.class);
-                startActivity(intent);
-            }
+        txtEsqueceuSenha.setOnClickListener(v -> {
+            Intent intent = new Intent(Login.this, EsqueceuSenha.class);
+            startActivity(intent);
         });
     }
 
@@ -84,7 +76,7 @@ public class Login extends AppCompatActivity {
 
         call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Usuario usuario = response.body();
 
@@ -102,7 +94,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Toast.makeText(Login.this, "Erro na comunicação: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

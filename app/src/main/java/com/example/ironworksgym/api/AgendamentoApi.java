@@ -16,15 +16,14 @@ public interface AgendamentoApi {
 
     // Criar um novo agendamento
     @POST("agendamento/create")
-    Call<Agenda> create(@Body Agenda agendamento);
-
+    Call<Agenda> create(@Body Agenda agenda);
     // Buscar todos os agendamentos
     @GET("agendamento/findAll")
     Call<List<Agenda>> findAll();
 
     // Atualizar um agendamento existente
     @PUT("agendamento/update/{id}")
-    Call<Agenda> update(@Path("id") long id, @Body Agenda agendamento);
+    Call<Agenda> update(@Path("id") long id, @Body Agenda agenda);
 
     // Inativar um agendamento
     @PUT("agendamento/inativar/{id}")

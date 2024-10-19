@@ -1,6 +1,6 @@
 package com.example.ironworksgym.api;
 
-import com.example.ironworksgym.AgendamentoApp.Equipamentos;
+import com.example.ironworksgym.Models.Equipamento;
 
 import java.util.List;
 
@@ -8,14 +8,20 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface EquipamentoApi {
 
-    // Método para obter a lista de equipamentos
-    @GET("equipamentos")
-    Call<List<Equipamentos>> getEquipamentos();
+    @GET("/equipamento/findAll")
+    Call<List<Equipamento>> findAll();
 
-    // Método para agendar um equipamento
-    @POST("equipamentos/agendar")
-    Call<Equipamentos> agendarEquipamento(@Body Equipamentos equipamento);
+    @POST("/equipamento/create")
+    Call<Equipamento> createEquipamento(@Body Equipamento equipamento);
+
+    @PUT("/equipamento/inativar/{id}")
+    Call<Equipamento> inativarEquipamento(@Path("id") long id);
+
+    @PUT("/equipamento/ativar/{id}")
+    Call<Equipamento> ativarEquipamento(@Path("id") long id);
 }

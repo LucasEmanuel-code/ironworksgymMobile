@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ironworksgym.AgendamentoApp.Inicio;
+import com.example.ironworksgym.Client.RetrofitClient;
 import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
-import com.example.ironworksgym.Client.RetrofitClient;
 import com.example.ironworksgym.api.UsuarioApi;
 
 import java.text.ParseException;
@@ -30,7 +30,9 @@ import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
 
-    EditText editUsuario, editEmail, editDataNasc, editSenha, editPhone, editCPF, editConfirmarSenha, editApartamento, editTorre;
+    private Usuario usuario = new Usuario();
+    private UsuarioApi usuarioApi;
+    EditText editNome, editEmail, editDataNasc, editSenha, editPhone, editCPF, editConfirmarSenha, editApartamento, editTorre;
     Button btnEntrar;
 
     @Override
@@ -45,7 +47,8 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateFields()) {
-                    create(); // Chama a função para registrar o usuário via Retrofit
+                    long id = 0;
+                    create(id); // Chama a função para registrar o usuário via Retrofit
                 } else {
                     Toast.makeText(getApplicationContext(), "Verifique as informações novamente", Toast.LENGTH_SHORT).show();
                 }
@@ -53,7 +56,7 @@ public class Register extends AppCompatActivity {
         });
     }
     private void initViews() {
-        editUsuario = findViewById(R.id.editUsuario);
+        editNome = findViewById(R.id.editNome);
         editEmail = findViewById(R.id.editEmail);
         editDataNasc = findViewById(R.id.editDataNasc);
         editSenha = findViewById(R.id.editSenha);
@@ -70,7 +73,7 @@ public class Register extends AppCompatActivity {
         setupDateTextWatcher();
     }
     private boolean validateFields() {
-        String usuario = editUsuario.getText().toString();
+        String usuario = editNome.getText().toString();
         String email = editEmail.getText().toString();
         String dataNascimento = editDataNasc.getText().toString();
         String senha = editSenha.getText().toString();
@@ -86,8 +89,8 @@ public class Register extends AppCompatActivity {
 
         return isValid;
     }
-    public void create() {
-        String nome = editUsuario.getText().toString();
+    public void create(long id) {
+        String nome = editNome.getText().toString();
         String email = editEmail.getText().toString();
         String dataNascimento = editDataNasc.getText().toString();
         String senha = editSenha.getText().toString();
@@ -96,7 +99,7 @@ public class Register extends AppCompatActivity {
         String apartamento = editApartamento.getText().toString();
         String torre = editTorre.getText().toString();
 
-        Usuario usuario = new Usuario();
+        usuario.setId(usuario.getId());
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setData_Nascimento(dataNascimento);
@@ -110,17 +113,14 @@ public class Register extends AppCompatActivity {
         Call<Usuario> call = usuarioApi.create(usuario);
 
         call.enqueue(new Callback<Usuario>() {
+
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Log.d("API Response", "Response: " + response.body());
 
-                if (response.isSuccessful() && response.body() != null) {
-                    Usuario usuarioResponse = response.body();
-                    long usuarioId = usuarioResponse.getId();
-
+                if (response.isSuccessful()) {
                     Toast.makeText(Register.this, "Registro bem-sucedido!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Register.this, Inicio.class);
-                    intent.putExtra("usuarioId", usuarioId);
+                    intent.putExtra("usuarioId", usuario);
                     startActivity(intent);
                     finish();
                 } else {
@@ -138,13 +138,13 @@ public class Register extends AppCompatActivity {
     private boolean validateinfo(String usuario, String email, String dataNasc, String senha, String numero, String CPF, String confirmarSenha, String apartamento, String torre) {
         // Validação de Usuário
         if (TextUtils.isEmpty(usuario)) {
-            editUsuario.setError("O campo não pode estar vazio!");
+            editNome.setError("O campo não pode estar vazio!");
             return false;
         } else if (!usuario.matches("[a-zA-Z]+")) {
-            editUsuario.setError("Insira apenas caracteres alfabéticos");
+            editNome.setError("Insira apenas caracteres alfabéticos");
             return false;
         } else if (usuario.length() < 4) {
-            editUsuario.setError("O nome de usuário deve ter ao menos 4 caracteres");
+            editNome.setError("O nome de usuário deve ter ao menos 4 caracteres");
             return false;
         }
 

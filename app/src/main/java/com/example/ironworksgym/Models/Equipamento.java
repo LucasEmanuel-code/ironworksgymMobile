@@ -1,25 +1,54 @@
 package com.example.ironworksgym.Models;
 
-public class Equipamento {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    private int id;
+public class Equipamento implements Parcelable {
+    private long id;
     private String nome;
     private int quantidade;
     private String statusEquipamento;
 
-    // Construtor
-    public Equipamento(int id, String nome, int quantidade, String statusEquipamento) {
-        this.id = id;
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.statusEquipamento = statusEquipamento;
+    public Equipamento() {}
+
+    protected Equipamento(Parcel in) {
+        id = in.readLong();
+        nome = in.readString();
+        quantidade = in.readInt();
+        statusEquipamento = in.readString();
     }
 
-    public int getId() {
+    public static final Creator<Equipamento> CREATOR = new Creator<Equipamento>() {
+        @Override
+        public Equipamento createFromParcel(Parcel in) {
+            return new Equipamento(in);
+        }
+
+        @Override
+        public Equipamento[] newArray(int size) {
+            return new Equipamento[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(nome);
+        dest.writeInt(quantidade);
+        dest.writeString(statusEquipamento);
+    }
+
+    // Getters e Setters
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

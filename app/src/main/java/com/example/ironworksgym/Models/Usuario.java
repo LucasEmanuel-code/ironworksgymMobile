@@ -1,105 +1,104 @@
 package com.example.ironworksgym.Models;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Usuario implements Serializable {
-    private long id; // Adiciona o campo ID
+public class Usuario implements Parcelable {
+    private long id;
     private String nome;
-    private String email;
-    private String dataNascimento; // Corrigido para camelCase
-    private String senha;
+    private String dataNascimento;
     private String telefone;
-    private String cpf; // Corrigido para camelCase
-    private String apartamento;
+    private String email;
+    private String senha;
+    private String cpf;
     private String torre;
+    private String apartamento;
+    private String statusUsuario;
 
-    // Construtor
-    public Usuario(long id, String nome, String email, String dataNascimento, String senha,
-                   String telefone, String cpf, String apartamento, String torre) {
-        this.id = id; // Inicializa o ID
-        this.nome = nome;
-        this.email = email;
-        this.dataNascimento = dataNascimento; // Corrigido para camelCase
-        this.senha = senha;
-        this.telefone = telefone;
-        this.cpf = cpf; // Corrigido para camelCase
-        this.apartamento = apartamento;
-        this.torre = torre;
-    }
-
-    // Construtor padrão
     public Usuario() {}
 
+    protected Usuario(Parcel in) {
+        id = in.readLong();
+        nome = in.readString();
+        dataNascimento = in.readString();
+        telefone = in.readString();
+        email = in.readString();
+        senha = in.readString();
+        cpf = in.readString();
+        torre = in.readString();
+        apartamento = in.readString();
+        statusUsuario = in.readString();
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(nome);
+        dest.writeString(dataNascimento);
+        dest.writeString(telefone);
+        dest.writeString(email);
+        dest.writeString(senha);
+        dest.writeString(cpf);
+        dest.writeString(torre);
+        dest.writeString(apartamento);
+        dest.writeString(statusUsuario);
+    }
+
     // Getters e Setters
-    public long getId() { // Adiciona o getter para ID
-        return id;
-    }
+    public long getId() { return id; }
 
-    public void setId(long id) { // Adiciona o setter para ID
-        this.id = id;
-    }
+    public void setId(long id) { this.id = id; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() { return nome; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getData_Nascimento() { return dataNascimento; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setData_Nascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
 
-    public String getData_Nascimento() { // Corrigido para camelCase
-        return dataNascimento;
-    }
+    public String getTelefone() { return telefone; }
 
-    public void setData_Nascimento(String dataNascimento) { // Corrigido para camelCase
-        this.dataNascimento = dataNascimento;
-    }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
-    public String getSenha() {
-        return senha;
-    }
+    public String getEmail() { return email; }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    public String getSenha() { return senha; }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public void setSenha(String senha) { this.senha = senha; }
 
-    public String getCpf() {
-        return cpf;
-    }
+    public String getCpf() { return cpf; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public String getApartamento() {
-        return apartamento;
-    }
+    public String getTorre() { return torre; }
 
-    public void setApartamento(String apartamento) {
-        this.apartamento = apartamento;
-    }
+    public void setTorre(String torre) { this.torre = torre; }
 
-    public String getTorre() {
-        return torre;
-    }
+    public String getApartamento() { return apartamento; }
 
-    public void setTorre(String torre) {
-        this.torre = torre;
-    }
+    public void setApartamento(String apartamento) { this.apartamento = apartamento; }
+
+    public String getStatusUsuario() { return statusUsuario; }
+
+    public void setStatusUsuario(String statusUsuario) { this.statusUsuario = statusUsuario; }
 }

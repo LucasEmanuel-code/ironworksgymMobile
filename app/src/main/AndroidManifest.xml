@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -24,11 +27,15 @@
         </activity>
         <activity android:name=".InicioApp.Login" />
         <activity android:name=".InicioApp.Register"/>
+        <activity android:name=".InicioApp.EsqueceuSenha"/>
 
         <activity android:name=".AgendamentoApp.Agendamento" />
         <activity android:name=".AgendamentoApp.Inicio"/>
         <activity android:name=".AgendamentoApp.Equipamentos"/>
         <activity android:name=".AgendamentoApp.Home2" />
+
+        <activity android:name=".SegurançaApp.FaleConosco"/>
+        <activity android:name=".SegurançaApp.PrivaSegurança"/>
 
 
     </application>
