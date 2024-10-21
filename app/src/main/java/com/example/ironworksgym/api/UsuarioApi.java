@@ -8,12 +8,17 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface UsuarioApi {
 
     @GET("usuario/findAll")
     Call<List<Usuario>> findAll();
+
+    @GET("usuario/findByEmail/")
+    Call<Usuario> findByEmail(@Query("email") String email);
 
     @GET("usuario/findById/{id}")
     Call<Usuario> findById(@Path("id") long id);
@@ -24,6 +29,10 @@ public interface UsuarioApi {
 
     @POST("usuario/signin")
     Call<Usuario> signin(@Body Usuario usuario);
+
+    @PUT("usuario/alterarSenha/{id}")
+    Call<Usuario> alterarSenha(@Path("id") long id, @Body Usuario usuario);
+
 
 }
 

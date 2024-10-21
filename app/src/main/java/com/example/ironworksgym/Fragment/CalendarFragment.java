@@ -1,49 +1,64 @@
 package com.example.ironworksgym.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.ironworksgym.R;
-import com.example.ironworksgym.recyclerview.ItemAdapter;
-import com.example.ironworksgym.recyclerview.ItemData;
+import com.example.ironworksgym.recyclerview.AgendamentoAdapter;
+import com.example.ironworksgym.recyclerview.AgendamentoItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ItemAdapter adapter;
-    private List<ItemData> equipamentos;
+    private AgendamentoAdapter adapter;
+    private List<AgendamentoItem> equipamentos;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Infla o layout para o fragmento
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        // Inicialize o RecyclerView
-        recyclerView = view.findViewById(R.id.recyclerview); // Aponte para o RecyclerView do XML
-
-        // Crie a lista de dados (equipamentos)
+        recyclerView = view.findViewById(R.id.recyclerview);
         equipamentos = new ArrayList<>();
 
-        // Adicione alguns itens de exemplo. Aqui você pode usar os dados reais.
-        equipamentos.add(new ItemData("Equipamento 1", "01/10/2024", "10:00", R.drawable.peck_deck));
-        equipamentos.add(new ItemData("Equipamento 2", "02/10/2024", "11:00", R.drawable.bicicleta));
+        // Acessar os dados do Bundle (se existirem)
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String equipamentoNome = bundle.getString("equipamentoNome");
+            String dataAgendamento = bundle.getString("dataAgendamento");
+            String horaAgendamento = bundle.getString("horaAgendamento");
 
-        // Crie o Adapter e passe a lista de dados
-        adapter = new ItemAdapter(equipamentos);
+            if (equipamentoNome != null && dataAgendamento != null && horaAgendamento != null) {
+                // Adiciona o novo agendamento à lista a partir dos dados do Bundle
+                equipamentos.add(new AgendamentoItem(equipamentoNome, dataAgendamento, horaAgendamento, R.drawable.peck_deck));
+            }
+        }
 
-        // Configure o LayoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext())); // Use LinearLayoutManager
+        // Acessar os dados do SharedPreferences (se existirem)
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("AgendamentoPrefs", Context.MODE_PRIVATE);
+        String equipamentoNomePrefs = sharedPreferences.getString("equipamentoNome", null);
+        String dataAgendamentoPrefs = sharedPreferences.getString("dataAgendamento", null);
+        String horaAgendamentoPrefs = sharedPreferences.getString("horaAgendamento", null);
 
-        // Conecte o Adapter ao RecyclerView
+        if (equipamentoNomePrefs != null && dataAgendamentoPrefs != null && horaAgendamentoPrefs != null) {
+            // Adiciona o novo agendamento à lista a partir dos dados do SharedPreferences
+            equipamentos.add(new AgendamentoItem(equipamentoNomePrefs, dataAgendamentoPrefs, horaAgendamentoPrefs, R.drawable.peck_deck));
+        }
+
+        // Configura o RecyclerView
+        adapter = new AgendamentoAdapter(equipamentos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
         return view;

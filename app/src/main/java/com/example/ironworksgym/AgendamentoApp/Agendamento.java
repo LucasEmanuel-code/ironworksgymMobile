@@ -42,7 +42,7 @@ public class Agendamento extends AppCompatActivity {
 
         // Recebendo o objeto Equipamento usando Parcelable
         equipamento = getIntent().getParcelableExtra("equipamento"); // Use a chave correta aqui
-        usuario = getIntent().getParcelableExtra("usuarioId");
+        usuario = getIntent().getParcelableExtra("usuario"); // Use a chave correta para o usuário
 
         if (equipamento == null || equipamento.getId() <= 0) {
             Toast.makeText(this, "Equipamento inválido!", Toast.LENGTH_SHORT).show();
@@ -93,16 +93,19 @@ public class Agendamento extends AppCompatActivity {
 
         Log.d("Agendamento", "Dados enviados: " + agendamento.toString());
 
-
         Call<Agenda> call = agendamentoApi.create(agendamento);
         call.enqueue(new Callback<Agenda>() {
             @Override
             public void onResponse(Call<Agenda> call, Response<Agenda> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Agendamento.this, "Agendamento criado!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Agendamento.this, Home2.class);
+                    Intent intent = new Intent (Agendamento.this, Home2.class);
+                    intent.putExtra("equipamentoNome", equipamento.getNome());
+                    intent.putExtra("dataAgendamento", agendamento.getDataDisponivel());
+                    intent.putExtra("horaAgendamento", agendamento.getHorarioDisponivel());
+                    intent.putExtra("usuario", usuario);
                     startActivity(intent);
-                    finish();
+
                 } else {
                     Toast.makeText(Agendamento.this, "Erro: " + response.message(), Toast.LENGTH_SHORT).show();
                 }

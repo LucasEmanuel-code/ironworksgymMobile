@@ -28,6 +28,8 @@ public class Login extends AppCompatActivity {
     EditText editEmail, editSenha;
     Button btEntrar;
 
+    private Usuario usuario;
+
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);

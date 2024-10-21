@@ -11,8 +11,8 @@ import java.util.List;
 public class Item extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ItemAdapter adapter;
-    private List<ItemData> equipamentos;
+    private AgendamentoAdapter adapter;
+    private List<AgendamentoItem> equipamentos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +23,10 @@ public class Item extends AppCompatActivity {
         equipamentos = new ArrayList<>();
 
         // Adiciona alguns dados
-        equipamentos.add(new ItemData("Equipamento 1", "01/10/2024", "10:00", R.drawable.peck_deck));
-        equipamentos.add(new ItemData("Equipamento 2", "02/10/2024", "11:00", R.drawable.peck_deck));
+        equipamentos.add(new AgendamentoItem("Equipamento 1", "01/10/2024", "10:00", R.drawable.peck_deck));
+        equipamentos.add(new AgendamentoItem("Equipamento 2", "02/10/2024", "11:00", R.drawable.peck_deck));
 
-        adapter = new ItemAdapter(equipamentos);
+        adapter = new AgendamentoAdapter(equipamentos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }

@@ -1,11 +1,11 @@
 package com.example.ironworksgym.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class Agenda implements Serializable {
-
+public class Agenda implements Parcelable {
     @SerializedName("id")
     private long id;
 
@@ -16,10 +16,10 @@ public class Agenda implements Serializable {
     private String horarioDisponivel;
 
     @SerializedName("usuario")
-    private Usuario usuario;  // Renomeado para refletir que é um objeto
+    private Usuario usuario;
 
     @SerializedName("equipamento")
-    private Equipamento equipamento;  // Renomeado para refletir que é um objeto
+    private Equipamento equipamento;
 
     @SerializedName("statusAgendamento")
     private String statusAgendamento;
@@ -37,6 +37,42 @@ public class Agenda implements Serializable {
 
     // Construtor padrão
     public Agenda() {}
+
+    protected Agenda(Parcel in) {
+        id = in.readLong();
+        dataDisponivel = in.readString();
+        horarioDisponivel = in.readString();
+        usuario = in.readParcelable(Usuario.class.getClassLoader());
+        equipamento = in.readParcelable(Equipamento.class.getClassLoader());
+        statusAgendamento = in.readString();
+    }
+
+    public static final Creator<Agenda> CREATOR = new Creator<Agenda>() {
+        @Override
+        public Agenda createFromParcel(Parcel in) {
+            return new Agenda(in);
+        }
+
+        @Override
+        public Agenda[] newArray(int size) {
+            return new Agenda[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(dataDisponivel);
+        dest.writeString(horarioDisponivel);
+        dest.writeParcelable(usuario, flags);
+        dest.writeParcelable(equipamento, flags);
+        dest.writeString(statusAgendamento);
+    }
 
     // Getters e Setters
     public long getId() {

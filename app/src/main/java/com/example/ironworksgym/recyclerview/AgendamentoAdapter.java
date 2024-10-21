@@ -9,24 +9,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ironworksgym.R;
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
+public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.AgendamentoViewHolder> {
 
-    private List<ItemData> items; // Mudado de equipamentos para items
+    private List<AgendamentoItem>  agendamentoItems; // Mudado de equipamentos para items
 
-    public ItemAdapter(List<ItemData> items) {
-        this.items = items;
+    public AgendamentoAdapter(List<AgendamentoItem> agendamentoItems) {
+        this.agendamentoItems = agendamentoItems;
     }
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AgendamentoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teste1, parent, false); // Verifique se o layout do item está correto
-        return new ItemViewHolder(view);
+        return new AgendamentoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        ItemData item = items.get(position);
+    public void onBindViewHolder(@NonNull AgendamentoViewHolder holder, int position) {
+        AgendamentoItem item = agendamentoItems.get(position);
         holder.itemTextView.setText(item.getEquipamento());
         holder.dataTextView.setText(item.getDataMesAno());
         holder.horarioTextView.setText(item.getHorario());
@@ -34,15 +34,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return agendamentoItems.size();
     }
 
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class AgendamentoViewHolder extends RecyclerView.ViewHolder {
         TextView itemTextView; // Mudado de equipamentoTextView para itemTextView
         TextView dataTextView;
         TextView horarioTextView;
 
-        public ItemViewHolder(@NonNull View itemView) {
+        public AgendamentoViewHolder(@NonNull View itemView) {
             super(itemView);
             itemTextView = itemView.findViewById(R.id.equipamento);
             dataTextView = itemView.findViewById(R.id.dataMesAno);

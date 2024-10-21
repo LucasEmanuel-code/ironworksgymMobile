@@ -1,5 +1,7 @@
 package com.example.ironworksgym.AgendamentoApp;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.ironworksgym.Fragment.CalendarFragment;
 import com.example.ironworksgym.Fragment.HomeFragment;
 import com.example.ironworksgym.Fragment.ProfileFragment;
@@ -21,6 +24,7 @@ public class Home2 extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +33,22 @@ public class Home2 extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavView);
         frameLayout = findViewById(R.id.FrameLayout);
 
-        // Carregar o fragment inicial (HomeFragment)
-        loadFragment(new HomeFragment(), true);
+        // Receber os dados do agendamento via Intent
+        Intent intent = getIntent();
+        String equipamentoNome = intent.getStringExtra("equipamentoNome");
+        String dataAgendamento = intent.getStringExtra("dataAgendamento");
+        String horaAgendamento = intent.getStringExtra("horaAgendamento");
+
+        // Passar os dados para o CalendarFragment usando Bundle
+        CalendarFragment calendarFragment = new CalendarFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("equipamentoNome", equipamentoNome);
+        bundle.putString("dataAgendamento", dataAgendamento);
+        bundle.putString("horaAgendamento", horaAgendamento);
+        calendarFragment.setArguments(bundle);
+
+        // Carregar o fragmento CalendarFragment com os dados do agendamento
+        loadFragment(calendarFragment, true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -47,7 +65,6 @@ public class Home2 extends AppCompatActivity {
                     loadFragment(new ProfileFragment(), false);
                 }
 
-                // Não coloque mais nenhuma chamada a loadFragment aqui
                 return true;
             }
         });
@@ -57,13 +74,13 @@ public class Home2 extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        // Se for a inicialização do aplicativo, substitua o fragmento atual
         if (isAppInitialized) {
-            fragmentTransaction.add(R.id.FrameLayout, fragment);
+            fragmentTransaction.replace(R.id.FrameLayout, fragment); // Use replace para não empilhar
         } else {
             fragmentTransaction.replace(R.id.FrameLayout, fragment);
         }
 
         fragmentTransaction.commit();
     }
-
 }
