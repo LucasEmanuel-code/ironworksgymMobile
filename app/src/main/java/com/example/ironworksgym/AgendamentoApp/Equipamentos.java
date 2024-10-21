@@ -33,7 +33,7 @@ public class Equipamentos extends AppCompatActivity {
         setContentView(R.layout.equipamentos);
 
         // Recebendo o objeto Usuario do Intent
-        usuario = getIntent().getParcelableExtra("usuarioId"); // Recebendo o objeto Usuario
+        usuario = getIntent().getParcelableExtra("usuario"); // Recebendo o objeto Usuario
 
         // Inicializa a API Retrofit
         equipamentoApi = RetrofitClient.getRetrofitInstance().create(EquipamentoApi.class);

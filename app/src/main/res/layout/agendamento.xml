@@ -61,16 +61,10 @@
 
     <TimePicker
         android:id="@+id/hours"
-        style="@style/CustomTimePickerStyle"
+        style="@style/CustomTimePickerStyle1"
         android:layout_width="93dp"
         android:layout_height="208dp"
         android:layout_marginTop="16dp"
-        android:numbersBackgroundColor="@color/white"
-        android:numbersInnerTextColor="@color/white"
-        android:numbersSelectorColor="@color/white"
-        android:numbersTextColor="@color/white"
-        android:outlineAmbientShadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"
         android:timePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Fragment.CalendarFragment"> <!-- Corrigido de Equipamento para Item -->
-
+    tools:context=".recyclerview.Item">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -25,7 +24,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="390dp"
-        android:layout_height="680dp"
+        android:layout_height="550dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"

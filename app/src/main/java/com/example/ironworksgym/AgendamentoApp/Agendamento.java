@@ -2,10 +2,13 @@ package com.example.ironworksgym.AgendamentoApp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
 import com.example.ironworksgym.api.AgendamentoApi;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -74,6 +78,32 @@ public class Agendamento extends AppCompatActivity {
                 Toast.makeText(Agendamento.this, "Por favor, selecione uma data e hora.", Toast.LENGTH_LONG).show();
             }
         });
+
+        timePicker = findViewById(R.id.hours);
+        timePicker.setIs24HourView(true);
+
+        // Aplicar a cor branca ao TimePicker programaticamente
+        int whiteColor = getResources().getColor(android.R.color.white);
+        try {
+            // Aplicar cor branca aos textos dos números (horas e minutos)
+            int numberPickerTextColorId = getResources().getIdentifier("time_header", "id", "android");
+            if (numberPickerTextColorId != 0) {
+                timePicker.findViewById(numberPickerTextColorId).setBackgroundColor(whiteColor);
+            }
+
+            // Para versões anteriores ao Android 6.0, forçar cor branca nos spinners
+            for (int i = 0; i < timePicker.getChildCount(); i++) {
+                View child = timePicker.getChildAt(i);
+                if (child instanceof NumberPicker ) {
+                    @SuppressLint("SoonBlockedPrivateApi") Field textColorField = NumberPicker.class.getDeclaredField("mSelectorWheelPaint");
+                    textColorField.setAccessible(true);
+                    ((Paint) textColorField.get(child)).setColor(whiteColor);
+                    ((NumberPicker) child).invalidate();
+                }
+            }
+        } catch (Exception e) {
+            Log.e("TimePicker", "Erro ao aplicar cor branca ao TimePicker: " + e.getMessage());
+        }
     }
 
     @SuppressLint("DefaultLocale")

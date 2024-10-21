@@ -13,8 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ironworksgym.AgendamentoApp.Inicio;
 import com.example.ironworksgym.Client.RetrofitClient;
+import com.example.ironworksgym.Fragment.CalendarFragment;
 import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
 import com.example.ironworksgym.api.UsuarioApi;
@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity {
                     // Verifica se o ID foi retornado
                     Log.d("Login", "ID do usuário: " + usuario.getId());
 
-                    Intent intent = new Intent(Login.this, Inicio.class);
+                    Intent intent = new Intent(Login.this, CalendarFragment.class);
                     intent.putExtra("usuario", usuario.getNome());
                     intent.putExtra("usuarioId", usuario.getId()); // Passa o ID para a próxima Activity
                     startActivity(intent);

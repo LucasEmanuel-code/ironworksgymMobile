@@ -109,7 +109,7 @@ public class Register extends AppCompatActivity {
         usuario.setApartamento(apartamento);
         usuario.setTorre(torre);
 
-        UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
+        usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
         Call<Usuario> call = usuarioApi.create(usuario);
 
         call.enqueue(new Callback<Usuario>() {
@@ -118,11 +118,8 @@ public class Register extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
                 if (response.isSuccessful()) {
-                    Toast.makeText(Register.this, "Registro bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Register.this, Inicio.class);
-                    intent.putExtra("usuarioId", usuario);
-                    startActivity(intent);
-                    finish();
+                    pesquisarUsuario(usuario);
+
                 } else {
                     Log.d("API Error", "Erro: " + response.message());
                     Toast.makeText(Register.this, "Erro ao registrar: " + response.message(), Toast.LENGTH_SHORT).show();
@@ -135,6 +132,33 @@ public class Register extends AppCompatActivity {
             }
         });
     }
+
+    private void pesquisarUsuario(Usuario usuario) {
+        usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
+        Call<Usuario> call = usuarioApi.findByEmail(usuario.getEmail());
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Register.this, "Registro bem-sucedido!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Register.this, Inicio.class);
+                    Usuario user = response.body();
+                    intent.putExtra("usuarioId", user);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Log.d("API Error", "Erro: " + response.message());
+                    Toast.makeText(Register.this, "Erro ao registrar: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+
+            }
+        });
+    }
+
     private boolean validateinfo(String usuario, String email, String dataNasc, String senha, String numero, String CPF, String confirmarSenha, String apartamento, String torre) {
         // Validação de Usuário
         if (TextUtils.isEmpty(usuario)) {

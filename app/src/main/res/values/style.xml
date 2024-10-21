@@ -24,4 +24,12 @@
     <style name="CustomTimePickerStyle">
         <item name="android:textColor">#FFFFFF</item> <!-- Altera a cor do texto -->
     </style>
+
+        <!-- Estilo personalizado para o TimePicker -->
+        <style name="CustomTimePickerStyle1" parent="android:Widget.Material.TimePicker">
+            <item name="android:headerBackground">@android:color/white</item>
+            <item name="android:numbersTextColor">@android:color/white</item>
+            <item name="android:timePickerMode">spinner</item>
+        </style>
+
 </resources>
