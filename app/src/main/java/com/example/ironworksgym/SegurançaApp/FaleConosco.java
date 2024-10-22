@@ -42,11 +42,13 @@ public class FaleConosco extends AppCompatActivity {
         edtEmail = findViewById(R.id.editEmail);
         edtTexto = findViewById(R.id.editMensagem);
         enviar = findViewById(R.id.btEnviar);
+        btvoltar = findViewById(R.id.btVoltar);
 
         // Verificações de null
         Log.d("FaleConosco", "edtEmail: " + edtEmail); // Deve ser diferente de null
         Log.d("FaleConosco", "edtTexto: " + edtTexto); // Deve ser diferente de null
         Log.d("FaleConosco", "enviar: " + enviar); // Deve ser diferente de null
+        Log.d("FaleConosco", "btVoltar: " + btvoltar); // Deve ser diferente de null
 
         mensagemApi = RetrofitClient.getRetrofitInstance().create(MensagemApi.class);
 
@@ -64,13 +66,12 @@ public class FaleConosco extends AppCompatActivity {
             }
         });
 
-        btvoltar = findViewById(R.id.btVoltar);
         btvoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Mude para o SettingsFragment
+                // Mude para o SettingsFragment usando o ID correto do layout que contém o fragmento
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.btVoltar, new SettingsFragment()) // R.id.fragment_container deve ser o ID do layout que contém os fragments
+                        .replace(R.id.btVoltar, new SettingsFragment()) // Use o ID correto do contêiner de fragmentos
                         .commit();
             }
         });
@@ -126,5 +127,4 @@ public class FaleConosco extends AppCompatActivity {
             Snackbar.make(enviar, "Usuário não logado ou email não disponível.", Snackbar.LENGTH_LONG).show();
         }
     }
-
 }
