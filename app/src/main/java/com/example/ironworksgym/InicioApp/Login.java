@@ -68,13 +68,17 @@ public class Login extends AppCompatActivity {
 
         call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Usuario usuario = response.body();
-                    Log.d(TAG, "ID do usuário: " + usuario.getId());
-                    getAgendamentos(usuario.getId(), usuario);
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Login.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Login.this, Home2.class);
+                    Usuario user = response.body();
+                    intent.putExtra("usuarioId", user);
+                    startActivity(intent);
+                    finish();
                 } else {
-                    Toast.makeText(Login.this, "Login falhou! Verifique suas credenciais.", Toast.LENGTH_SHORT).show();
+                    Log.d("API Error", "Erro: " + response.message());
+                    Toast.makeText(Login.this, "Erro ao logar: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -85,9 +89,9 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void getAgendamentos(int userId, Usuario usuarioLogado) {
+    private void getAgendamentos(long userId, Usuario usuario) {
         UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
-        Call<List<Agendamento>> call = usuarioApi.getClass(userId);
+        Call<List<Agendamento>> call = usuarioApi.getAgendamentos(usuario);
 
         call.enqueue(new Callback<List<Agendamento>>() {
             @Override
@@ -95,13 +99,13 @@ public class Login extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     saveAgendamentosToPreferences(response.body());
                 }
-                navigateToHome(usuarioLogado); // Navega para Home2 após a obtenção dos agendamentos
+                navigateToHome(usuario); // Navega para Home2 após a obtenção dos agendamentos
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Agendamento>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Erro ao buscar agendamentos: " + t.getMessage());
-                navigateToHome(usuarioLogado); // Navega para Home2 mesmo em caso de erro
+                navigateToHome(usuario); // Navega para Home2 mesmo em caso de erro
             }
         });
     }

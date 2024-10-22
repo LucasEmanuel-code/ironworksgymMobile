@@ -34,7 +34,7 @@ public interface UsuarioApi {
     @PUT("usuario/alterarSenha/{id}")
     Call<Usuario> alterarSenha(@Path("id") long id, @Body Usuario usuario);
 
-
-    Call<List<Agendamento>> getClass(int userId);
+    @GET("usuario/agendamento/{userId}") // Exemplo de como pode ser o endpoint
+    Call<List<Agendamento>> getAgendamentos(@Path("userId") Usuario userId);
 }
 
