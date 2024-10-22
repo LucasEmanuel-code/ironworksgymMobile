@@ -11,7 +11,6 @@ public class Mensager implements Parcelable {
     private String Data_Mensagem;
     private String Emissor;
     private String Email;
-    private String Telefone;
     private String Texto;
     private String StatusMensagem;
 
@@ -24,7 +23,6 @@ public class Mensager implements Parcelable {
         Data_Mensagem = in.readString();
         Emissor = in.readString();
         Email = in.readString();
-        Telefone = in.readString();
         Texto = in.readString();
         StatusMensagem = in.readString();
     }
@@ -59,14 +57,6 @@ public class Mensager implements Parcelable {
 
     public void setEmail(String email) {
         Email = email;
-    }
-
-    public String getTelefone() {
-        return Telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        Telefone = telefone;
     }
 
     public String getTexto() {
@@ -108,7 +98,6 @@ public class Mensager implements Parcelable {
         dest.writeString(Data_Mensagem);
         dest.writeString(Emissor);
         dest.writeString(Email);
-        dest.writeString(Telefone);
         dest.writeString(Texto);
         dest.writeString(StatusMensagem);
     }

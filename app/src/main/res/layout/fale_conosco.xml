@@ -43,41 +43,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editUsuario"
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corner"
-            android:hint="@string/hint_usuario"
+            android:hint="@string/hint_email"
             android:inputType="text"
-            android:maxLines="1"
-            android:padding="15dp"
-            android:textSize="18sp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Assunto"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="375dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:textColorHint="#ADFFFFFF"
-        app:boxStrokeColor="#FFFFFF"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutUsuario">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAssunto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:hint="@string/txt_assuntos"
-            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:padding="15dp"
             android:textSize="18sp"
@@ -97,7 +68,7 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Assunto"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutUsuario"
         tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
 
     <com.google.android.material.textfield.TextInputLayout

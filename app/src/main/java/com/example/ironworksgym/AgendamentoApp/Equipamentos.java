@@ -55,10 +55,10 @@ public class Equipamentos extends AppCompatActivity {
         MaterialCardView cardEsteira = findViewById(R.id.card5);
 
         // Define o evento de clique nos cards para selecionar o equipamento
-        cardLegPress.setOnClickListener(v -> selectEquipment("Leg Press", 1));
-        cardCadeiraExtensora.setOnClickListener(v -> selectEquipment("Cadeira Extensora", 2));
-        cardPeckDeck.setOnClickListener(v -> selectEquipment("Peck Deck", 3));
-        cardBicicleta.setOnClickListener(v -> selectEquipment("Bicicleta", 4));
+        cardLegPress.setOnClickListener(v -> selectEquipment("Cadeira Extensora", 1));
+        cardCadeiraExtensora.setOnClickListener(v -> selectEquipment("Peck Deck", 2));
+        cardPeckDeck.setOnClickListener(v -> selectEquipment("Bicicleta", 3));
+        cardBicicleta.setOnClickListener(v -> selectEquipment("Leg Press", 4));
         cardEsteira.setOnClickListener(v -> selectEquipment("Esteira", 5));
     }
 

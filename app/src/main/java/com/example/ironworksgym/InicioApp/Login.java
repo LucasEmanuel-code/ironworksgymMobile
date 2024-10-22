@@ -12,9 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ironworksgym.AgendamentoApp.Agendamento;
 import com.example.ironworksgym.AgendamentoApp.Home2;
 import com.example.ironworksgym.Client.RetrofitClient;
+import com.example.ironworksgym.Models.Agenda;
 import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
 import com.example.ironworksgym.api.UsuarioApi;
@@ -69,15 +69,17 @@ public class Login extends AppCompatActivity {
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(Login.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, Home2.class);
+                if (response.isSuccessful() && response.body() != null) {
                     Usuario user = response.body();
-                    intent.putExtra("usuarioId", user);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(Login.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+
+                    // Salvar o ID do usuário nas preferências
+                    saveUserIdToPreferences(user.getId());
+
+                    // Obter os agendamentos após o login
+                    getAgendamentos(user.getId(), user);
                 } else {
-                    Log.d("API Error", "Erro: " + response.message());
+                    Log.d(TAG, "Erro: " + response.message());
                     Toast.makeText(Login.this, "Erro ao logar: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -91,11 +93,11 @@ public class Login extends AppCompatActivity {
 
     private void getAgendamentos(long userId, Usuario usuario) {
         UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
-        Call<List<Agendamento>> call = usuarioApi.getAgendamentos(usuario);
+        Call<List<Agenda>> call = usuarioApi.getAgendamentos(usuario);
 
-        call.enqueue(new Callback<List<Agendamento>>() {
+        call.enqueue(new Callback<List<Agenda>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Agendamento>> call, @NonNull Response<List<Agendamento>> response) {
+            public void onResponse(@NonNull Call<List<Agenda>> call, @NonNull Response<List<Agenda>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     saveAgendamentosToPreferences(response.body());
                 }
@@ -103,17 +105,24 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Agendamento>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Agenda>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Erro ao buscar agendamentos: " + t.getMessage());
                 navigateToHome(usuario); // Navega para Home2 mesmo em caso de erro
             }
         });
     }
 
-    private void saveAgendamentosToPreferences(List<Agendamento> agendamento) {
+    private void saveUserIdToPreferences(long userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("userId", userId);
+        editor.apply();
+    }
+
+    private void saveAgendamentosToPreferences(List<Agenda> agendamentos) {
         SharedPreferences sharedPreferences = getSharedPreferences("AgendamentoPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("agendamentos", new Gson().toJson(agendamento));
+        editor.putString("agendamentos", new Gson().toJson(agendamentos));
         editor.apply();
     }
 

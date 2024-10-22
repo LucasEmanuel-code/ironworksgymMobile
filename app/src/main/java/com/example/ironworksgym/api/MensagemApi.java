@@ -22,10 +22,11 @@ public interface MensagemApi {
     Call<Mensager> create(@Body Mensager mensager);
 
     @POST("mensagem/inativar/{id}")
-    Call<Mensager> inativar(@Body Mensager mensager);
+    Call<Mensager> inativar(@Path("id") long id);
 
     @POST("mensagem/marcarComoLida/{id}")
-    Call<Mensager> marcarComoLida(@Body Mensager mensager);
+    Call<Mensager> marcarComoLida(@Path("id") long id);
+
 
 }
 

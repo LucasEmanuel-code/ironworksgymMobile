@@ -1,16 +1,19 @@
 package com.example.ironworksgym.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ironworksgym.AgendamentoApp.Equipamentos;
 import com.example.ironworksgym.R;
 import com.example.ironworksgym.recyclerview.AgendamentoAdapter;
 import com.example.ironworksgym.recyclerview.AgendamentoItem;
@@ -24,12 +27,15 @@ public class CalendarFragment extends Fragment {
     private AgendamentoAdapter adapter;
     private List<AgendamentoItem> equipamentos;
 
+    private Button btRefazer;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview);
+        btRefazer = view.findViewById(R.id.btRefazer); // Adicione esta linha para inicializar o botão
         equipamentos = new ArrayList<>();
 
         // Acessar os dados do Bundle (se existirem)
@@ -61,6 +67,16 @@ public class CalendarFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        // Configura o listener do botão
+        btRefazer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Equipamentos.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
+
 }

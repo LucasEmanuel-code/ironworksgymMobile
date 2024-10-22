@@ -21,7 +21,6 @@ public interface AgendamentoApi {
     @GET("agendamento/findAll")
     Call<List<Agenda>> findAll();
 
-
     // Atualizar um agendamento existente
     @PUT("agendamento/update/{id}")
     Call<Agenda> update(@Path("id") long id, @Body Agenda agenda);

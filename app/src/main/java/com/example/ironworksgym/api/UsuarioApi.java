@@ -1,6 +1,7 @@
 package com.example.ironworksgym.api;
 
 import com.example.ironworksgym.AgendamentoApp.Agendamento;
+import com.example.ironworksgym.Models.Agenda;
 import com.example.ironworksgym.Models.Usuario;
 
 import java.util.List;
@@ -35,6 +36,6 @@ public interface UsuarioApi {
     Call<Usuario> alterarSenha(@Path("id") long id, @Body Usuario usuario);
 
     @GET("usuario/agendamento/{userId}") // Exemplo de como pode ser o endpoint
-    Call<List<Agendamento>> getAgendamentos(@Path("userId") Usuario userId);
+    Call<List<Agenda>> getAgendamentos(@Path("userId") Usuario userId);
 }
 
