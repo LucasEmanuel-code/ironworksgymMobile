@@ -21,7 +21,7 @@ public class RetrofitClient {
 
     // Método para obter a instância do Retrofit
     public static Retrofit getRetrofitInstance() {
-        String apiUrl = "http://172.17.19.109:8080"; // URL da API local
+        String apiUrl = "http://192.168.0.135:8080"; // URL da API local
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(apiUrl) // URL base do servidor da API

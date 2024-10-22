@@ -1,5 +1,6 @@
 package com.example.ironworksgym.api;
 
+import com.example.ironworksgym.AgendamentoApp.Agendamento;
 import com.example.ironworksgym.Models.Usuario;
 
 import java.util.List;
@@ -34,5 +35,6 @@ public interface UsuarioApi {
     Call<Usuario> alterarSenha(@Path("id") long id, @Body Usuario usuario);
 
 
+    Call<List<Agendamento>> getClass(int userId);
 }
 

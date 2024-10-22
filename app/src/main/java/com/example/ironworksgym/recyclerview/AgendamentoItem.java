@@ -48,6 +48,18 @@ public class AgendamentoItem implements Parcelable {
         return horario;
     }
 
+    public void setEquipamento(String equipamento) {
+        this.equipamento = equipamento;
+    }
+
+    public void setDataMesAno(String dataMesAno) {
+        this.dataMesAno = dataMesAno;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
     @Override
     public int describeContents() {
         return 0;

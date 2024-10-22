@@ -16,13 +16,26 @@ import com.example.ironworksgym.Fragment.CalendarFragment;
 import com.example.ironworksgym.Fragment.HomeFragment;
 import com.example.ironworksgym.Fragment.ProfileFragment;
 import com.example.ironworksgym.Fragment.SettingsFragment;
+import com.example.ironworksgym.Models.Usuario;
 import com.example.ironworksgym.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Home2 extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
+    private Usuario usuario;
+
+    private static final String TAG_HOME = "home_fragment";
+    private static final String TAG_SETTINGS = "settings_fragment";
+    private static final String TAG_CALENDAR = "calendar_fragment";
+    private static final String TAG_PROFILE = "profile_fragment";
+    private String currentTag = TAG_HOME;
+
+    private Map<Integer, Fragment> fragmentMap = new HashMap<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -31,7 +44,11 @@ public class Home2 extends AppCompatActivity {
         setContentView(R.layout.home2);
 
         bottomNavigationView = findViewById(R.id.bottomNavView);
-        frameLayout = findViewById(R.id.FrameLayout);
+        frameLayout = findViewById(R.id.framelayout);
+        usuario = getIntent().getParcelableExtra("usuario");
+
+        // Inicializa o mapa de fragmentos
+        initializeFragmentMap();
 
         // Receber os dados do agendamento via Intent
         Intent intent = getIntent();
@@ -39,30 +56,40 @@ public class Home2 extends AppCompatActivity {
         String dataAgendamento = intent.getStringExtra("dataAgendamento");
         String horaAgendamento = intent.getStringExtra("horaAgendamento");
 
-        // Passar os dados para o CalendarFragment usando Bundle
-        CalendarFragment calendarFragment = new CalendarFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("equipamentoNome", equipamentoNome);
-        bundle.putString("dataAgendamento", dataAgendamento);
-        bundle.putString("horaAgendamento", horaAgendamento);
-        calendarFragment.setArguments(bundle);
+        // Passar os dados para o CalendarFragment usando Bundle, mas não carregá-lo automaticamente
+        if (equipamentoNome != null || dataAgendamento != null || horaAgendamento != null) {
+            CalendarFragment calendarFragment = new CalendarFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("equipamentoNome", equipamentoNome);
+            bundle.putString("dataAgendamento", dataAgendamento);
+            bundle.putString("horaAgendamento", horaAgendamento);
+            calendarFragment.setArguments(bundle);
 
-        // Carregar o fragmento CalendarFragment com os dados do agendamento
-        loadFragment(calendarFragment, true);
+            // Armazena o fragmento de calendário com as informações, mas não o carrega ainda.
+            fragmentMap.put(R.id.calendar, calendarFragment);
+        }
+
+        // Carregar o HomeFragment como tela inicial
+        if (savedInstanceState == null) {
+            loadFragment(new HomeFragment(), TAG_HOME, false);
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
+                // Verifica se o ID do item selecionado está no mapa de fragmentos
+                Fragment selectedFragment = fragmentMap.get(item.getItemId());
 
-                if (itemId == R.id.home) {
-                    loadFragment(new HomeFragment(), false);
-                } else if (itemId == R.id.settings) {
-                    loadFragment(new SettingsFragment(), false);
-                } else if (itemId == R.id.calendar) {
-                    loadFragment(new CalendarFragment(), false);
-                } else { // nav Profile
-                    loadFragment(new ProfileFragment(), false);
+                // Se o fragmento for o ProfileFragment, passar o objeto Usuario
+                if (selectedFragment instanceof ProfileFragment) {
+                    Bundle userBundle = new Bundle();
+                    userBundle.putParcelable("usuario", usuario);
+                    selectedFragment.setArguments(userBundle);
+                }
+
+                if (selectedFragment != null) {
+                    // Carregar o fragmento selecionado
+                    loadFragment(selectedFragment, getTagForFragment(selectedFragment), false);
                 }
 
                 return true;
@@ -70,17 +97,54 @@ public class Home2 extends AppCompatActivity {
         });
     }
 
-    private void loadFragment(Fragment fragment, boolean isAppInitialized) {
+    private void initializeFragmentMap() {
+        // Mapeia os IDs de menu para os fragmentos correspondentes
+        fragmentMap.put(R.id.home, new HomeFragment());
+        fragmentMap.put(R.id.settings, new SettingsFragment());
+        fragmentMap.put(R.id.calendar, new CalendarFragment()); // Inicializa, mas não carrega ainda
+        fragmentMap.put(R.id.profile, new ProfileFragment());
+    }
+
+    private String getTagForFragment(Fragment fragment) {
+        if (fragment instanceof HomeFragment) {
+            return TAG_HOME;
+        } else if (fragment instanceof SettingsFragment) {
+            return TAG_SETTINGS;
+        } else if (fragment instanceof CalendarFragment) {
+            return TAG_CALENDAR;
+        } else if (fragment instanceof ProfileFragment) {
+            return TAG_PROFILE;
+        }
+        return TAG_HOME; // Default case
+    }
+
+    private void loadFragment(Fragment fragment, String tag, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Se for a inicialização do aplicativo, substitua o fragmento atual
-        if (isAppInitialized) {
-            fragmentTransaction.replace(R.id.FrameLayout, fragment); // Use replace para não empilhar
+        Fragment existingFragment = fragmentManager.findFragmentByTag(tag);
+
+        // Se o fragmento já existe, mostre-o. Caso contrário, adicione-o.
+        if (existingFragment != null) {
+            fragmentTransaction.replace(R.id.framelayout, existingFragment, tag);
         } else {
-            fragmentTransaction.replace(R.id.FrameLayout, fragment);
+            fragmentTransaction.replace(R.id.framelayout, fragment, tag);
+            if (addToBackStack) {
+                fragmentTransaction.addToBackStack(tag);
+            }
         }
 
         fragmentTransaction.commit();
+        currentTag = tag;  // Atualiza a tag do fragmento atual
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Se houver fragmentos na pilha de retorno, vai para o fragmento anterior.
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();  // Comportamento padrão
+        }
     }
 }
